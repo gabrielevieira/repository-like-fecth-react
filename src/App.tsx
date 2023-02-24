@@ -1,24 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import useGithubLikeManagement from './hooks/useGithubLikeManagement';
+import useGithubRepositories from './hooks/useGithubRepositories/useGithubRepositories';
+
+
 
 function App() {
+  const { repos, isLoding, error, refetch } = useGithubRepositories({ org: 'google' })
+  const { repositoryLiked, toggleLike } = useGithubLikeManagement()
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {isLoding && <div>..Carregando</div>}
+      {error && (<div>
+        <p>Erro ao Carregar os dados</p>
+        <button onClick={() => refetch}>Tentar novamente</button>
+      </div>)
+      }
+      {
+        repos.map((repo) => {
+          const isLiked = repositoryLiked.find(r => r.id === repo.id)
+          return <div key={repo.id} >
+            <h2>{repo.full_name}
+              <span>by {repo.owner.login}</span>
+            </h2>
+            <button onClick={() => toggleLike(repo.id)} >{
+              isLiked ? "Descutir" : "Curti"}
+            </button>
+          </div>
+        })
+      }
     </div>
   );
 }
