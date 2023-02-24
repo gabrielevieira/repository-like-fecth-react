@@ -44,3 +44,22 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+Contrução de APP Like e Deslike
+
+- Apagar os componentes que não será utilizado
+- Verificar e validar a api
+- Criar uma interface dos dados que sera buscado no FrontEnd
+- Criar um novo estado para renderizar esses dados
+- Criar um useEffect para buscar os dados
+- Renderizar em tela (MAP)
+- Criar um estado de loging de carregamento
+- E renderizar em tela o Loding
+- Criar um estado de erro e renderizar em tela
+- Criar uma função toogle curtir e descutir
+- Separamos em hooks a chamada do repositorys do GitHub
+- Separamos os types do typescript
+- Melhoramos o refecth da aplicação
+- Salvamos em localstorage
+# repository-like-fecth-react
